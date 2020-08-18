@@ -1,0 +1,11 @@
+#leftPanel {
+    background-color: aqua;
+    height: 100vh;
+}
+#todaysWeather {
+    background-color:fuchsia;
+    height: 65%;
+}
+#forecasts {
+    background-color: blue;
+}

@@ -12,19 +12,88 @@
 // 12 WHEN I open the weather dashboard
 // 13 THEN I am presented with the last searched city forecast
 
-
 //==============================================================
+//1. upon page load, supossed to show a default city's current weather and 5 day forecast.
 
-//listen for and onlclick event for the search button
+//2. there is an input field for looking up a specific city's current weather and 5 day forecast.
 
-    //Grab the value (cityName) form the input.
+//3. There is a list of past city searches
+//4 global variables
+var cityName = "phoenix";
+var searchButton = $("#searchButton");
+let pastCitySearches = [];
 
-    //store the value in a variable using let
 
-    //query the weather API with the value from the user.(AJAX CALL).
+//upon page load 3 things happen:
+// 1 - get current weather based on city 
+function getCurrentWeather(){
+    var apiKey = "8bbeb41510dd325ec13385f22fb87563";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ cityName + "&appid=" + apiKey; 
     
-        //.then - GRAB and store the relevent infor from the API (QUERY response) and then function { } - to make the call asyncronous
-        
-        //query the weather API for the weather index. ---- SAVE TO LAST
 
-        //display the info to the user.
+//TODO use api for getting current weather
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response){
+        console.log(response)
+      })
+
+//TODO use data from response to populate the different weather fields.
+}
+
+//2 - get 5 day forecast based on city 
+function getFiveDayForecast (city){
+
+    //TODO use api for getting 5 day forecast
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+    //TODO use data from response to populate each card of the 5 day forecast.
+
+} 
+
+//3 - show a list of past city searches
+function ShowPastCities() {
+
+    let ul = $("#history");
+
+    for(var x = 0; x < 5; x++){
+        //TODO create an instance of a list item
+        //TODO Set the value of a list item
+        //TODO append list item to UL
+    }
+
+
+}
+//(a) list of cities kept somewhere
+
+
+//3 this function runs to set up things (listeners, etc)
+//search button
+function init() {
+//so listener goes inside
+    searchButton.on("click", function(event){
+        event.preventDefault();
+        cityName =$("enteredCity").val();
+
+        getFiveDayForecast(cityName);
+
+        getCurrentWeather(cityName);
+
+        pastCitySearches.push(cityName);
+
+    })
+
+
+};
+
+
+// 1 know that the page needs to be ready and listening for 2 things on load: get weather and forecast
+$(document).ready(function() {
+    getCurrentWeather(cityName);// 1 we have to pass in the city name to find the current weather for that city.
+    getFiveDayForecast (cityName);// 2 we have to pass in the city name to find the 5 day for that city.
+    
+
+});
