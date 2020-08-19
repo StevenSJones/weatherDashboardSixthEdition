@@ -1,26 +1,9 @@
-// 1 GIVEN a weather dashboard with form inputs
-// 2 WHEN I search for a city
-// 3 THEN I am presented with current and future conditions for that city and that city is added to the search history
-// 4 WHEN I view current weather conditions for that city
-// 5 THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-// 6 WHEN I view the UV index
-// 7 THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-// 8 WHEN I view future weather conditions for that city
-// 9 THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-// 10 WHEN I click on a city in the search history
-// 11 THEN I am again presented with current and future conditions for that city
-// 12 WHEN I open the weather dashboard
-// 13 THEN I am presented with the last searched city forecast
-
-//==============================================================
-//1. upon page load, supossed to show a default city's current weather and 5 day forecast.
-
-//2. there is an input field for looking up a specific city's current weather and 5 day forecast.
-
-//3. There is a list of past city searches
+$(document).ready(function() {
+  init();
+    
 //4 global variables
-var cityName = "phoenix";
-var searchButton = $("#searchButton");
+var cityName = $(this).attr("data-name");
+// var searchButton = $("#searchButton");
 let pastCitySearches = [];
 
 
@@ -41,32 +24,59 @@ function getCurrentWeather(){
 
 //TODO use data from response to populate the different weather fields.
 }
+ // Function for displaying movie data
+ function renderButtons() {
+
+    // Deleting the movies prior to adding new movies
+    // (this is necessary otherwise you will have repeat buttons)
+    $("#history").empty();
+
+    // Looping through the array of movies
+    for (var i = 0; i < pastCitySearches.length; i++) {
+
+      // Then dynamicaly generating buttons for each movie in the array
+      // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+      var a = $("<button>");
+      // Adding a class of movie-btn to our button
+      a.addClass("city-btn");
+      // Adding a data-attribute
+      a.attr("data-name", pastCitySearches[i]);
+      // Providing the initial button text
+      a.text(pastCitySearches[i]);
+      // Adding the button to the buttons-view div
+      $("#history").append(a);
+    }
+  }
 
 //2 - get 5 day forecast based on city 
-function getFiveDayForecast (city){
+// function getFiveDayForecast (cityName){
+//     var apiKey = "8bbeb41510dd325ec13385f22fb87563";
+//     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ cityName + "&appid=" + apiKey; 
 
     //TODO use api for getting 5 day forecast
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
+    // $.ajax({
+    //     url: queryURL,
+    //     method: "GET"
+    //   }).then(function(response){
+    //     console.log(response)
+    //   })
     //TODO use data from response to populate each card of the 5 day forecast.
 
-} 
+// } 
 
 //3 - show a list of past city searches
-function ShowPastCities() {
+// function ShowPastCities() {
 
-    let ul = $("#history");
+//     let ul = $("#history");
 
-    for(var x = 0; x < 5; x++){
-        //TODO create an instance of a list item
-        //TODO Set the value of a list item
-        //TODO append list item to UL
-    }
+//     for(var x = 0; x < 5; x++){
+//         //TODO create an instance of a list item
+//         //TODO Set the value of a list item
+//         //TODO append list item to UL
+//     }
 
 
-}
+// }
 //(a) list of cities kept somewhere
 
 
@@ -74,11 +84,11 @@ function ShowPastCities() {
 //search button
 function init() {
 //so listener goes inside
-    searchButton.on("click", function(event){
+   $("#searchButton").on("click", function(event){
         event.preventDefault();
-        cityName =$("enteredCity").val();
+        cityName = $("#enteredCity").val().trim();
 
-        getFiveDayForecast(cityName);
+        //getFiveDayForecast(cityName);
 
         getCurrentWeather(cityName);
 
@@ -86,14 +96,5 @@ function init() {
 
     })
 
-
-};
-
-
-// 1 know that the page needs to be ready and listening for 2 things on load: get weather and forecast
-$(document).ready(function() {
-    getCurrentWeather(cityName);// 1 we have to pass in the city name to find the current weather for that city.
-    getFiveDayForecast (cityName);// 2 we have to pass in the city name to find the 5 day for that city.
-    
-
-});
+}
+})
