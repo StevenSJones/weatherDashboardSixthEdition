@@ -12,6 +12,8 @@
 // 12 WHEN I open the weather dashboard
 // 13 THEN I am presented with the last searched city forecast
 
+
+
 //==============================================================
 //1. upon page load, supossed to show a default city's current weather and 5 day forecast.
 
@@ -20,13 +22,12 @@
 //3. There is a list of past city searches
 //4 global variables
 $(document).ready(function () {
-  // getFiveDayForecast (cityName);// 2 we have to pass in the city name to find the 5 day for that city.
+  //getFiveDayForecast (cityName);// 2 we have to pass in the city name to find the 5 day for that city.
 
   var cityName = " ";
   var searchButton = $("#searchButton");
   let pastCitySearches = [];
 
-  getCurrentWeather(cityName); // 1 we have to pass in the city name to find the current weather for that city.
   //upon page load 3 things happen:
   // 1 - get current weather based on city
   function getCurrentWeather(city) {
@@ -36,6 +37,7 @@ $(document).ready(function () {
       city +
       "&appid=" +
       apiKey;
+
 
     //TODO use api for getting current weather
     $.ajax({
@@ -68,23 +70,53 @@ $(document).ready(function () {
       //appending the pOne var to the weatherDiv
       weatherDiv.append(pThree);
 
+      var lat = response.coord.lat; 
+      
+      var pFour = $("<p>").text("latitude: " + lat);
+
+      var lon = response.coord.lon;
+      
+
+      var pFour = $("<p>").text("longitude: " + lon);
+      getFiveDayForecast(lat,lon);
       $("#todaysWeather").append(weatherDiv);
     });
   }
+  // https://api.openweathermap.org/data/2.5/https://api.openweathermap.org/data/2.5/onecall?lat=undefined&lon=undefined&?q=&appid=8bbeb41510dd325ec13385f22fb87563
 
-  //2 - get 5 day forecast based on city
-  // function getFiveDayForecast (city){
 
-  //TODO use api for getting 5 day forecast
-  // $.ajax({
-  //     url: queryURL,
-  //     method: "GET"
-  //   }).then(function(response){
-  //     console.log(response)
-  //   }
-  //TODO use data from response to populate each card of the 5 day forecast.
+  // 2 - get 5 day forecast based on city
+  function getFiveDayForecast (lat,lon){
+    var apiKey = "8bbeb41510dd325ec13385f22fb87563";
+    var queryURL =
+      "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" +lon +
+      "&appid=" +
+      apiKey;
 
-  //   )}
+      
+    
+  // TODO use api for getting 5 day forecast
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response){
+      console.log(response)
+
+      var fiveDayDiv = $("<div id = 'forecasts'>");
+      
+      //concatenating the text for the humidity response
+      var divOne = $("<p>").text("Latitude: " + lat);
+
+      //concatenating the text for the humidity response
+      var divTwo = $("<p>").text("Longitude: " + lat);
+      //appending the pOne var to the weatherDiv
+      fiveDayDiv.append(divOne);
+      fiveDayDiv.append(divTwo);
+      
+    }
+  // TODO use data from response to populate each card of the 5 day forecast.
+
+    )}
 
   //3 - show a list of past city searches
   // function ShowPastCities() {
@@ -102,8 +134,8 @@ $(document).ready(function () {
     function (event) {
       event.preventDefault();
       cityName = $("#enteredCity").val().trim();
-
-      //getFiveDayForecast(cityName);
+        console.log("cityname " + cityName)
+      //getFiveDayForecast(lat,lon);
 
       getCurrentWeather(cityName);
 
