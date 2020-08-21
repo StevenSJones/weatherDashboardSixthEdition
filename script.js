@@ -96,6 +96,7 @@ function getFiveDayForecast(lat, lon) {
     "&units=imperial" +
     "&appid=" +
     apiKey;
+    
 
   // TODO use api for getting 5 day forecast
   $.ajax({
@@ -107,19 +108,19 @@ function getFiveDayForecast(lat, lon) {
       console.log("5 day forecast response: ", response);
       for (i = 0; i < response.daily.length; i++) {
         // date = response.daily[0];
-        date = response.daily[i].dt;
+        date = moment.unix(response.daily[i].dt);
         icon = response.daily[i].weather[0].icon;
 
         temp = response.daily[i].temp.day;
         humidity = response.daily[i].humidity;
-        $("#date" + (i + 1)).text(date);//convert format to mm/dd/yyyy
-        $("#icon" + (i + 1)).attr("src", icon);//convert UTF8 value
+        $("#date" + (i + 1)).text(date);//dt-text convert format to mm/dd/yyyy
+        $("#icon" + (i + 1)).attr("src", "http://openweathermap.org/img/w/" + icon + ".png");//convert UTF8 value
         $("#temp" + (i + 1)).text(temp);
         $("#humidity" + (i + 1)).text(humidity);
       }
 
       var fiveDayDiv = $("<div id = 'forecasts'>");
-      //appending the pOne var to the weatherDiv
+      //append the pOne var to the weatherDiv
       // fiveDayDiv.append(divOne);
       // fiveDayDiv.append(divTwo);
     }
@@ -151,17 +152,30 @@ function init() {
       getCurrentWeather(cityName);
 
       //create a  button el with jquery
+      var pastCItyList = $("<button>");
 
-      //add the city name to the button element
+      //take the button element and set value equal to cityName
+      pastCItyList.val(cityName);
+      //take the button element and set text equal to cityName
+      pastCItyList.text(cityName);
+
+      pastCItyList.attr("class", "cityButton");
 
       //add the button to the page to the div=#leftPanel
-
+      $("#leftPanel").append(pastCItyList);
       //send city name to local storage
     }
     //so listener goes inside
   );
   //TODO-load pastCitySearches from local storage
 }
+
+$(".cityButton").on("click", function (){
+  console.log($(this).val());
+
+// getCurrentWeather($(this).val());//grab weather with the value from my button 
+
+})
 
 $(document).ready(function () {
   init();
