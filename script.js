@@ -1,12 +1,3 @@
-//1. upon page load, supossed to show a default city's current weather and 5 day forecast.
-
-//2. there is an input field for looking up a specific city's current weather and 5 day forecast.
-
-//3. There is a list of past city searches
-//4 global variables
-
-//getFiveDayForecast (cityName);// 2 we have to pass in the city name to find the 5 day for that city.
-
 //ready function on the entire doc
 $(document).ready(function () {
   var cityName = "Phoenix";
@@ -71,7 +62,7 @@ $(document).ready(function () {
       getFiveDayForecast(lat, lon);
     });
   }
-
+ // TODO use data from response to populate each card of the 5 day forecast.
   // 2 - get 5 day forecast based on city
   function getFiveDayForecast(lat, lon) {
     var apiKey = "8bbeb41510dd325ec13385f22fb87563";
@@ -114,14 +105,13 @@ $(document).ready(function () {
         // fiveDayDiv.append(divOne);
         // fiveDayDiv.append(divTwo);
       }
-      // TODO use data from response to populate each card of the 5 day forecast.
+     
     );
   }
 
   //3 - show a list of past city searches
   // function ShowPastCities() {
 
-  //     let ul = $("#history");
   //3 this function runs to set up things (listeners, etc)
   //search button
   function init() {
@@ -131,7 +121,6 @@ $(document).ready(function () {
         event.preventDefault();
         cityName = $("#enteredCity").val().trim();
         // console.log("cityname " + cityName)
-        //getFiveDayForecast(lat,lon);
 
         getCurrentWeather(cityName);
 
@@ -152,7 +141,6 @@ $(document).ready(function () {
         $("#leftPanel").append(listEl);
         //send city name to local storage
       }
-      //so listener goes inside
     );
     //TODO-load pastCitySearches from local storage
   }
