@@ -14,9 +14,12 @@ h1 {
   font: outline;
   color: rgb(226, 182, 5);
 }
-footer {
-  width: 100%;
-  height: max-content;
+h5 {
+  font-family: "Times New Roman", serif;
+  font: outline;
+  font:;
+  font: bolder;
+
 }
 
 #leftPanel {
