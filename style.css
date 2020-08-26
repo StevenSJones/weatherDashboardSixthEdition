@@ -1,11 +1,31 @@
+html {
+  /*main content for index and contact*/
+  flex: 1 0 auto; /*part of flexbox-0sticky footer/* Prevent Chrome, Opera, and Safari from
+      letting these items shrink to smaller than their content's
+      default minimum size. */
+  padding: 20px;
+  margin: 0 0 20px 0;
+}
+q {
+  font-family: parkavenue, cursive, serif;
+}
+h1{
+    font-family: 'Times New Roman', serif;
+    font: outline;
+    color: rgb(226, 182, 5);
+}
+
 #leftPanel {
-    background-color: aqua;
-    height: 100vh;
+  color: rgb(226, 182, 5);
+  background-color: black;
+  height: 100vh;
 }
 #todaysWeather {
-    background-color:fuchsia;
-    height: 65%;
+  color: rgb(226, 182, 5);
+  background-color: black;
+  height: 65%;
 }
 #forecasts {
-    background-color: blue;
+  color: rgb(226, 182, 5);
+  background-color: black;
 }

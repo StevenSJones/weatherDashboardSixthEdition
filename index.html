@@ -15,20 +15,30 @@
   <body>
 
 
-    <div class="container-fluid">
+    <div class="container-fluid border border-warning">
       <div class="row">
         <div class="col-sm-4" id="leftPanel">
-          <h4>Search for a City</h4>
+          <h1>Welcome to the Weather Dashboard√</h1>
+          <span class="d-block p-2 bg-warning text-dark"></span>
+          <h5>Type in a city and press "Search" to find that cities weather forcast</h5>
+          
+          
           <div class="form-group"><form class="form-inline" action="#" method="GET">
             <input id="enteredCity" type="text" placeholder="Enter A City">
-            <div class="list-group-append"><button class="btn btn-primary" id="searchButton" type="submit">Search</button></div>
+            <div class="list-group-append"><button class="btn btn-warning" id="searchButton" type="submit">Search</button></div>
+            <q class="text-muted"
+            >Your weather is Our business</q
+          >
+          <span align="center" ; class="text-muted">&copy; Steven Jones 2020</span
+            >
           </form></div>
           <div><ul class="list-group-history" id="history"></ul></div>
+          <span class="d-block p-2 bg-warning text-dark"></span>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-8 border border-warning">
           <div class="row" id="todaysWeather"></div>
           <div class="row" id="forecasts">
-            <div id="day1" class="card col" style="width: 18rem;">
+            <div id="day1" class="card col border border-warning" style="width: 18rem;">
               <div class="card-body">
                 <h5 id="date1" class="card-title"><!--date--></h5>
                 <img id="icon1" class="card-img-top" src="#" alt="Card image cap">
@@ -36,7 +46,7 @@
                 <p id="humidity1" class="card-text"><!--humidity--></p>
               </div>
             </div>
-            <div id="day2" class="card col" style="width: 18rem;">
+            <div id="day2" class="card col border border-warning" style="width: 18rem;">
               <div class="card-body">
                 <h5 id="date2" class="card-title"><!--date--></h5>
                 <img id="icon2" class="card-img-top" src="#" alt="Card image cap">
@@ -44,7 +54,7 @@
                 <p id="humidity2" class="card-text"><!--humidity--></p>
               </div>
             </div>
-            <div id="day3" class="card col" style="width: 18rem;">
+            <div id="day3" class="card col border border-warning" style="width: 18rem;">
               <div class="card-body">
                 <h5 id="date3" class="card-title"><!--date--></h5>
                 <img id="icon3" class="card-img-top" src="#" alt="Card image cap">
@@ -52,7 +62,7 @@
                 <p id="humidity3" class="card-text"><!--humidity--></p>
               </div>
             </div>
-            <div id="day4" class="card col" style="width: 18rem;">
+            <div id="day4" class="card col border border-warning" style="width: 18rem;">
               <div class="card-body">
                 <h5 id="date4" class="card-title"><!--date--></h5>
                 <img id="icon4" class="card-img-top" src="#" alt="Card image cap">
@@ -60,7 +70,7 @@
                 <p id="humidity4" class="card-text"><!--humidity--></p>
               </div>
             </div>
-            <div id="day5" class="card col" style="width: 18rem;">
+            <div id="day5" class="card col border border-warning" style="width: 18rem;">
               <div class="card-body">
                 <h5 id="date5" class="card-title"><!--date--></h5>
                 <img id="icon5" class="card-img-top" src="#" alt="Card image cap">
