@@ -1,18 +1,3 @@
-// 1 GIVEN a weather dashboard with form inputs
-// 2 WHEN I search for a city
-// 3 THEN I am presented with current and future conditions for that city and that city is added to the search history
-// 4 WHEN I view current weather conditions for that city
-// 5 THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-// 6 WHEN I view the UV index
-// 7 THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-// 8 WHEN I view future weather conditions for that city
-// 9 THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-// 10 WHEN I click on a city in the search history
-// 11 THEN I am again presented with current and future conditions for that city
-// 12 WHEN I open the weather dashboard
-// 13 THEN I am presented with the last searched city forecast
-
-//==============================================================
 //1. upon page load, supossed to show a default city's current weather and 5 day forecast.
 
 //2. there is an input field for looking up a specific city's current weather and 5 day forecast.
@@ -22,7 +7,7 @@
 
 //getFiveDayForecast (cityName);// 2 we have to pass in the city name to find the 5 day for that city.
 
-//ready function
+//ready function on the entire doc
 $(document).ready(function () {
   var cityName = "Phoenix";
   var lat;
@@ -171,10 +156,11 @@ $(document).ready(function () {
     );
     //TODO-load pastCitySearches from local storage
   }
-  
+
   init();
   getCurrentWeather(cityName);
-  $(document).on("click", ".cityButton", function () {    //console.log($(this).val());
+  $(document).on("click", ".cityButton", function () {
+    //console.log($(this).val());
     console.log("Made it this far!");
     getCurrentWeather($(this).val()); //grab weather with the value from my button
   });
