@@ -13,13 +13,12 @@ h1 {
   font-family: "Times New Roman", serif;
   font: outline;
   color: rgb(226, 182, 5);
+  text-shadow: 1px 1px white;
 }
 h5 {
   font-family: "Times New Roman", serif;
   font: outline;
-  font:;
   font: bolder;
-
 }
 
 #leftPanel {
