@@ -21,7 +21,7 @@
 > You will need an internet connect and a browser in which to view the application. 
 ## Usage:
 > This is a weather dashboard that runs in the browser and features dynamically updated HTML and CSS.
-> The app uses the OpenWeather API to retrieve weather data for cities and localStorage to store any persistent data.    
+> The app uses the OpenWeather API to retrieve weather data for cities and javascript as well as localStorage to store any persistent data pertaining to the weather in the city being searched.    
 ## Tests:
 > None    
 ## Contributing:
